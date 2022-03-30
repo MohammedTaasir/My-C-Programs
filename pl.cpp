@@ -1,0 +1,110 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int n,i,f[100],c=0,j,v=0,k=0,s=0,vo,co,vw,cn,tv=0,tc=0;
+	char a[100],vow[100],cons[100];	
+	printf("enter text\n");
+	for(i=0;(a[i]=getchar())!='\n';i++)
+	{
+		f[i]=-1;
+	}
+	a[i]='\0';
+	n=strlen(a);
+	for(i=0;i<n;i++)
+	{
+		if(a[i]=='a'||a[i]=='e'||a[i]=='i'||a[i]=='o'||a[i]=='u'||a[i]=='A'||a[i]=='E'||a[i]=='I'||a[i]=='O'||a[i]=='U')
+		{
+			vow[k++]=a[i];
+		}
+		else if(a[i]!=' ')                       // IT WILL NOT COUNT SPACE AS A CONSONANT
+		{
+			cons[s++]=a[i];
+		}
+	}
+	vow[k]='\0';
+	cons[s]='\0';
+		for(i=0;i<n;i++)
+	{
+		c=1;
+		for(j=i+1;j<n;j++)
+		{
+			if(a[i]==a[j])
+			{
+				c++;
+				f[j]=0;
+			}
+		}
+		if(f[i]!=0)
+		{
+			f[i]=c;
+		}
+	}
+	for(i=0;i<n;i++)
+	{
+		if(f[i]!=0)
+		{
+			printf("%c occurs %d times\n",a[i],f[i]);
+		}
+	}
+	vo=strlen(vow);
+	co=strlen(cons);
+	for(i=0;i<vo;i++)
+	{
+		f[i]=-1;
+	}
+	for(i=0;i<vo;i++)
+	{
+		vw=1;
+		for(j=i+1;j<vo;j++)
+		{
+			if(vow[i]==vow[j])
+			{
+				vw++;
+				f[j]=0;
+			}
+		}
+		if(f[i]!=0)
+		{
+			f[i]=vw;
+		}
+	}
+	for(i=0;i<vo;i++)
+	{
+		if(f[i]!=0)
+		{
+			printf("vowels = %c\n",vow[i]);
+			tv++;
+		}
+	}
+	for(i=0;i<co;i++)
+	{
+		f[i]=-1;
+	}
+	for(i=0;i<co;i++)
+	{
+		cn=1;
+		for(j=i+1;j<co;j++)
+		{
+			if(cons[i]==cons[j])
+			{
+				cn++;
+				f[j]=0;
+			}
+		}
+		if(f[i]!=0)
+		{
+			f[i]=cn;
+		}
+	}
+	for(i=0;i<co;i++)
+	{
+		if(f[i]!=0)
+		{
+			printf("consonants = %c\n",cons[i]);
+			tc++;
+		}
+	}
+	printf("total vowels used = %d\n",tv);
+	printf("total consonants used = %d\n",tc);	
+}
